@@ -1,0 +1,1 @@
+web: gunicorn api:app --workers 2 --threads 4 --timeout 35\n

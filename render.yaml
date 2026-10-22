@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: vayu-cloud-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn api:app --workers 2 --threads 4 --timeout 35
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
